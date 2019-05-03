@@ -1,0 +1,12 @@
+section.mosaic {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+section.compact {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}

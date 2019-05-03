@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Link, Switch, Route } from "react-router-dom"
+import BeerDisplayerSection from './BeerDisplayerSection';
+import BeerRandomSection from './BeerRandomSection';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <nav>
+          <Link to="/random">Random Beer</Link>
+          <Link to="/all/mosaic">All in mosaic mode</Link>
+          <Link to="/all/compact">All in compact mode</Link>
+        </nav>
+        <Switch>
+          <Route path="/random" render={() => {
+            return <BeerRandomSection></BeerRandomSection>
+          }}></Route>
+          <Route path="/all/:mode" component={BeerDisplayerSection}></Route>
+        </Switch>
+        <footer>
+          Copyright Ironhack
+        </footer>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App;
